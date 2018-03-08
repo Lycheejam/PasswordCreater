@@ -15,7 +15,10 @@ namespace PasswordCreater {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-
+            Password pw = new Password();
+            var s = pw.CharacterCreate();
+            Console.WriteLine("\r\n結果");
+            Console.Write(pw.PasswdCreate(8, s));
         }
     }
 }
