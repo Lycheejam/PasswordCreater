@@ -34,9 +34,14 @@
             this.CharLen16 = new System.Windows.Forms.RadioButton();
             this.CharLenCustom = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Passwd = new System.Windows.Forms.GroupBox();
+            this.GeneratePasswdCnt = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.Characters.SuspendLayout();
             this.CharactersLen.SuspendLayout();
+            this.GeneratePasswdCnt.SuspendLayout();
             this.SuspendLayout();
             // 
             // CreateButton
@@ -57,7 +62,7 @@
             this.Characters.Controls.Add(this.UpeCharCB);
             this.Characters.Location = new System.Drawing.Point(12, 72);
             this.Characters.Name = "Characters";
-            this.Characters.Size = new System.Drawing.Size(141, 115);
+            this.Characters.Size = new System.Drawing.Size(141, 116);
             this.Characters.TabIndex = 1;
             this.Characters.TabStop = false;
             this.Characters.Text = "使用文字";
@@ -110,7 +115,7 @@
             this.CharactersLen.Controls.Add(this.CharLen8);
             this.CharactersLen.Location = new System.Drawing.Point(13, 194);
             this.CharactersLen.Name = "CharactersLen";
-            this.CharactersLen.Size = new System.Drawing.Size(140, 100);
+            this.CharactersLen.Size = new System.Drawing.Size(140, 92);
             this.CharactersLen.TabIndex = 2;
             this.CharactersLen.TabStop = false;
             this.CharactersLen.Text = "パスワード文字数";
@@ -155,21 +160,65 @@
             this.textBox1.Size = new System.Drawing.Size(74, 19);
             this.textBox1.TabIndex = 3;
             // 
-            // Passwd
+            // GeneratePasswdCnt
             // 
-            this.Passwd.Location = new System.Drawing.Point(12, 301);
-            this.Passwd.Name = "Passwd";
-            this.Passwd.Size = new System.Drawing.Size(200, 100);
-            this.Passwd.TabIndex = 3;
-            this.Passwd.TabStop = false;
-            this.Passwd.Text = "groupBox1";
+            this.GeneratePasswdCnt.Controls.Add(this.textBox2);
+            this.GeneratePasswdCnt.Controls.Add(this.radioButton3);
+            this.GeneratePasswdCnt.Controls.Add(this.radioButton2);
+            this.GeneratePasswdCnt.Controls.Add(this.radioButton1);
+            this.GeneratePasswdCnt.Location = new System.Drawing.Point(12, 292);
+            this.GeneratePasswdCnt.Name = "GeneratePasswdCnt";
+            this.GeneratePasswdCnt.Size = new System.Drawing.Size(141, 92);
+            this.GeneratePasswdCnt.TabIndex = 3;
+            this.GeneratePasswdCnt.TabStop = false;
+            this.GeneratePasswdCnt.Text = "パスワード生成数";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(7, 19);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(35, 16);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "10";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(7, 42);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(35, 16);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "20";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(7, 65);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(47, 16);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "任意";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(60, 64);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(73, 19);
+            this.textBox2.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 539);
-            this.Controls.Add(this.Passwd);
+            this.ClientSize = new System.Drawing.Size(590, 390);
+            this.Controls.Add(this.GeneratePasswdCnt);
             this.Controls.Add(this.CharactersLen);
             this.Controls.Add(this.Characters);
             this.Controls.Add(this.CreateButton);
@@ -179,6 +228,8 @@
             this.Characters.PerformLayout();
             this.CharactersLen.ResumeLayout(false);
             this.CharactersLen.PerformLayout();
+            this.GeneratePasswdCnt.ResumeLayout(false);
+            this.GeneratePasswdCnt.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -196,7 +247,11 @@
         private System.Windows.Forms.RadioButton CharLenCustom;
         private System.Windows.Forms.RadioButton CharLen16;
         private System.Windows.Forms.RadioButton CharLen8;
-        private System.Windows.Forms.GroupBox Passwd;
+        private System.Windows.Forms.GroupBox GeneratePasswdCnt;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 
