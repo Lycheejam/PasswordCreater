@@ -23,7 +23,7 @@ namespace PasswordCreater {
         /// </summary>
         /// <param name="s">既存文字列</param>
         /// <returns>既存文字列+大文字</returns>
-        public string UpeCharCreate(string s) {
+        public string CreateUppercases(string s) {
             var sr = new StringBuilder();
             sr.Append(s);
             for (int i = 0x41; i < 0x5B; i++) {
@@ -36,7 +36,7 @@ namespace PasswordCreater {
         /// </summary>
         /// <param name="s">既存文字列</param>
         /// <returns>既存文字列+小文字</returns>
-        public string LowCharCreate(string s) {
+        public string CreateLowercases(string s) {
             var sr = new StringBuilder();
             sr.Append(s);
             for (int i = 0x61; i < 0x7B; i++) {
@@ -49,7 +49,7 @@ namespace PasswordCreater {
         /// </summary>
         /// <param name="s">既存文字列</param>
         /// <returns>既存文字列+数字</returns>
-        public string NumCharCreate(string s) {
+        public string CreateNumbers(string s) {
             var sr = new StringBuilder();
             sr.Append(s);
             for (int i = 0; i < 10; i++) {
@@ -62,7 +62,7 @@ namespace PasswordCreater {
         /// </summary>
         /// <param name="s">既存文字列</param>
         /// <returns>既存文字列+記号</returns>
-        public string SymCharCreate(string s) {
+        public string CreateSymbols(string s) {
             var sr = new StringBuilder();
             sr.Append(s);
             for (int i = 0x21; i < 0x2F; i++) {

@@ -25,10 +25,10 @@
         private void InitializeComponent() {
             this.CreateButton = new System.Windows.Forms.Button();
             this.Characters = new System.Windows.Forms.GroupBox();
-            this.SymCharCB = new System.Windows.Forms.CheckBox();
-            this.NumCharCB = new System.Windows.Forms.CheckBox();
-            this.LowCharCB = new System.Windows.Forms.CheckBox();
-            this.UpeCharCB = new System.Windows.Forms.CheckBox();
+            this.SymbolsCB = new System.Windows.Forms.CheckBox();
+            this.NumbersCB = new System.Windows.Forms.CheckBox();
+            this.LowercaseCB = new System.Windows.Forms.CheckBox();
+            this.UppercaseCB = new System.Windows.Forms.CheckBox();
             this.CharactersLen = new System.Windows.Forms.GroupBox();
             this.CharLenTbCustom = new System.Windows.Forms.TextBox();
             this.CharLenRbCustom = new System.Windows.Forms.RadioButton();
@@ -58,10 +58,10 @@
             // 
             // Characters
             // 
-            this.Characters.Controls.Add(this.SymCharCB);
-            this.Characters.Controls.Add(this.NumCharCB);
-            this.Characters.Controls.Add(this.LowCharCB);
-            this.Characters.Controls.Add(this.UpeCharCB);
+            this.Characters.Controls.Add(this.SymbolsCB);
+            this.Characters.Controls.Add(this.NumbersCB);
+            this.Characters.Controls.Add(this.LowercaseCB);
+            this.Characters.Controls.Add(this.UppercaseCB);
             this.Characters.Location = new System.Drawing.Point(12, 72);
             this.Characters.Name = "Characters";
             this.Characters.Size = new System.Drawing.Size(141, 116);
@@ -69,45 +69,45 @@
             this.Characters.TabStop = false;
             this.Characters.Text = "使用文字";
             // 
-            // SymCharCB
+            // SymbolsCB
             // 
-            this.SymCharCB.AutoSize = true;
-            this.SymCharCB.Location = new System.Drawing.Point(7, 88);
-            this.SymCharCB.Name = "SymCharCB";
-            this.SymCharCB.Size = new System.Drawing.Size(48, 16);
-            this.SymCharCB.TabIndex = 3;
-            this.SymCharCB.Text = "記号";
-            this.SymCharCB.UseVisualStyleBackColor = true;
+            this.SymbolsCB.AutoSize = true;
+            this.SymbolsCB.Location = new System.Drawing.Point(7, 88);
+            this.SymbolsCB.Name = "SymbolsCB";
+            this.SymbolsCB.Size = new System.Drawing.Size(48, 16);
+            this.SymbolsCB.TabIndex = 3;
+            this.SymbolsCB.Text = "記号";
+            this.SymbolsCB.UseVisualStyleBackColor = true;
             // 
-            // NumCharCB
+            // NumbersCB
             // 
-            this.NumCharCB.AutoSize = true;
-            this.NumCharCB.Location = new System.Drawing.Point(7, 65);
-            this.NumCharCB.Name = "NumCharCB";
-            this.NumCharCB.Size = new System.Drawing.Size(48, 16);
-            this.NumCharCB.TabIndex = 2;
-            this.NumCharCB.Text = "数字";
-            this.NumCharCB.UseVisualStyleBackColor = true;
+            this.NumbersCB.AutoSize = true;
+            this.NumbersCB.Location = new System.Drawing.Point(7, 65);
+            this.NumbersCB.Name = "NumbersCB";
+            this.NumbersCB.Size = new System.Drawing.Size(48, 16);
+            this.NumbersCB.TabIndex = 2;
+            this.NumbersCB.Text = "数字";
+            this.NumbersCB.UseVisualStyleBackColor = true;
             // 
-            // LowCharCB
+            // LowercaseCB
             // 
-            this.LowCharCB.AutoSize = true;
-            this.LowCharCB.Location = new System.Drawing.Point(7, 42);
-            this.LowCharCB.Name = "LowCharCB";
-            this.LowCharCB.Size = new System.Drawing.Size(92, 16);
-            this.LowCharCB.TabIndex = 1;
-            this.LowCharCB.Text = "英字(小文字)";
-            this.LowCharCB.UseVisualStyleBackColor = true;
+            this.LowercaseCB.AutoSize = true;
+            this.LowercaseCB.Location = new System.Drawing.Point(7, 42);
+            this.LowercaseCB.Name = "LowercaseCB";
+            this.LowercaseCB.Size = new System.Drawing.Size(92, 16);
+            this.LowercaseCB.TabIndex = 1;
+            this.LowercaseCB.Text = "英字(小文字)";
+            this.LowercaseCB.UseVisualStyleBackColor = true;
             // 
-            // UpeCharCB
+            // UppercaseCB
             // 
-            this.UpeCharCB.AutoSize = true;
-            this.UpeCharCB.Location = new System.Drawing.Point(7, 19);
-            this.UpeCharCB.Name = "UpeCharCB";
-            this.UpeCharCB.Size = new System.Drawing.Size(92, 16);
-            this.UpeCharCB.TabIndex = 0;
-            this.UpeCharCB.Text = "英字(大文字)";
-            this.UpeCharCB.UseVisualStyleBackColor = true;
+            this.UppercaseCB.AutoSize = true;
+            this.UppercaseCB.Location = new System.Drawing.Point(7, 19);
+            this.UppercaseCB.Name = "UppercaseCB";
+            this.UppercaseCB.Size = new System.Drawing.Size(92, 16);
+            this.UppercaseCB.TabIndex = 0;
+            this.UppercaseCB.Text = "英字(大文字)";
+            this.UppercaseCB.UseVisualStyleBackColor = true;
             // 
             // CharactersLen
             // 
@@ -257,10 +257,10 @@
 
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.GroupBox Characters;
-        private System.Windows.Forms.CheckBox SymCharCB;
-        private System.Windows.Forms.CheckBox NumCharCB;
-        private System.Windows.Forms.CheckBox LowCharCB;
-        private System.Windows.Forms.CheckBox UpeCharCB;
+        private System.Windows.Forms.CheckBox SymbolsCB;
+        private System.Windows.Forms.CheckBox NumbersCB;
+        private System.Windows.Forms.CheckBox LowercaseCB;
+        private System.Windows.Forms.CheckBox UppercaseCB;
         private System.Windows.Forms.GroupBox CharactersLen;
         private System.Windows.Forms.TextBox CharLenTbCustom;
         private System.Windows.Forms.RadioButton CharLenRbCustom;
