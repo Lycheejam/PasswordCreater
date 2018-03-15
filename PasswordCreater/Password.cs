@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PasswordCreater {
     class Password {
         //パスワード生成部分
-        public string PasswdCreate(int pwdLen, string pwdChar) {
+        public string CreatePasswd(int pwdLen, string pwdChar) {
             var sr = new StringBuilder(pwdLen);
 
             var rnd = new Random((int)DateTime.Now.Ticks);
@@ -18,6 +18,11 @@ namespace PasswordCreater {
 
             return sr.ToString();
         }
+
+        public int? CreateRandomSeed() {
+            return null;
+        }
+
         /// <summary>
         /// 大文字作成
         /// </summary>

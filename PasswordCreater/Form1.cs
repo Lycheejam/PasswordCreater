@@ -17,12 +17,41 @@ namespace PasswordCreater {
         private void button1_Click(object sender, EventArgs e) {
             //プロパティ取得（使用文字, パスワード長, 生成個数）
             Parameter para = new Parameter();
-            
+            para = GetParameter();
+            //パスワードクラス生成
+            var pwd = new Password();
+            //文字列生成
+            var sr = new StringBuilder();
+            if (para.Uppercase == true) {
+                sr.Append(pwd.CreateUppercases(sr.ToString()));
+            }
+            if (para.Lowercase == true) {
+                sr.Append(pwd.CreateLowercases(sr.ToString()));
+            }
+            if (para.Numbers == true) {
+                sr.Append(pwd.CreateNumbers(sr.ToString()));
+            }
+            if (para.Symbols == true) {
+                sr.Append(pwd.CreateSymbols(sr.ToString()));
+            }
+            var pwdList = new List<string>();
+            for (int i = 0; i < para.CrePass; i++) {
+                pwdList.Add(pwd.CreatePasswd(para.CharLen, sr.ToString()));
+            }
 
-            //Password pw = new Password();
-            //var s = pw.CharacterCreate();
-            //Console.WriteLine("\r\n結果");
-            //Console.Write(pw.PasswdCreate(8, s));
+            //カラム追加 10レコードごとにカラムを追加
+            //dgv.ColumnCount = 1;
+            dgv.AutoGenerateColumns = true;
+            dgv.DataSource = pwdList;
+            ////1レコードを格納
+            //DataGridViewRow row = new DataGridViewRow();
+            //row.CreateCells(dgv);
+            //row.SetValues(pwdList.ToList());
+            ////配列を配列の大きさの範囲にぶち込む
+            //dgv.Rows.AddRange(row);
+            foreach (var item in pwdList) {
+                Console.WriteLine(item);
+            }
         }
 
         private void CrePassRb_CheckedChanged(object sender, EventArgs e) {
@@ -49,30 +78,10 @@ namespace PasswordCreater {
             Parameter p = new Parameter();
 
             //使用記号
-            //大文字
-            if (UppercaseCB.Checked == true) {
-                p.Uppercase = true;
-            } else {
-                p.Uppercase = false;
-            }
-            //小文字
-            if (LowercaseCB.Checked == true) {
-                p.Lowercase = true;
-            } else {
-                p.Lowercase = false;
-            }
-            //数字
-            if (NumbersCB.Checked == true) {
-                p.Numbers = true;
-            } else {
-                p.Numbers = false;
-            }
-            //記号
-            if (SymbolsCB.Checked == true) {
-                p.Symbols = true;
-            } else {
-                p.Symbols = false;
-            }
+            p.Uppercase = UppercaseCB.Checked;  //大文字
+            p.Lowercase = LowercaseCB.Checked;  //小文字
+            p.Numbers = NumbersCB.Checked;  //数字
+            p.Symbols = SymbolsCB.Checked;  //記号
 
             //パスワード長
             if (CharLenRb8.Checked == true) {
@@ -82,7 +91,7 @@ namespace PasswordCreater {
             } else {
                 //空白の場合の処理
                 //デフォルト値を設定することで回避できる？
-                p.CharLen = Convert.ToInt16(CharLenTbCustom.Text);
+                p.CharLen = Convert.ToInt32(CharLenTbCustom.Text);
             }
             //生成個数
             if (CrePassRb10.Checked == true) {
@@ -91,7 +100,7 @@ namespace PasswordCreater {
                 p.CrePass = 20;
             } else {
                 //空白の場合の処理
-                p.CrePass = Convert.ToInt16(CrePassTbCustom.Text);
+                p.CrePass = Convert.ToInt32(CrePassTbCustom.Text);
             }
 
             return p;

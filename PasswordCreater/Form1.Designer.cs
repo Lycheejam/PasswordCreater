@@ -39,11 +39,11 @@
             this.CrePassRbCustom = new System.Windows.Forms.RadioButton();
             this.CrePassRb20 = new System.Windows.Forms.RadioButton();
             this.CrePassRb10 = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv = new System.Windows.Forms.DataGridView();
             this.Characters.SuspendLayout();
             this.CharactersLen.SuspendLayout();
             this.CrePassCustom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateButton
@@ -92,6 +92,8 @@
             // LowercaseCB
             // 
             this.LowercaseCB.AutoSize = true;
+            this.LowercaseCB.Checked = true;
+            this.LowercaseCB.CheckState = System.Windows.Forms.CheckState.Checked;
             this.LowercaseCB.Location = new System.Drawing.Point(7, 42);
             this.LowercaseCB.Name = "LowercaseCB";
             this.LowercaseCB.Size = new System.Drawing.Size(92, 16);
@@ -102,6 +104,8 @@
             // UppercaseCB
             // 
             this.UppercaseCB.AutoSize = true;
+            this.UppercaseCB.Checked = true;
+            this.UppercaseCB.CheckState = System.Windows.Forms.CheckState.Checked;
             this.UppercaseCB.Location = new System.Drawing.Point(7, 19);
             this.UppercaseCB.Name = "UppercaseCB";
             this.UppercaseCB.Size = new System.Drawing.Size(92, 16);
@@ -221,21 +225,21 @@
             this.CrePassRb10.UseVisualStyleBackColor = true;
             this.CrePassRb10.CheckedChanged += new System.EventHandler(this.CrePassRb_CheckedChanged);
             // 
-            // dataGridView1
+            // dgv
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(159, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(419, 372);
-            this.dataGridView1.TabIndex = 4;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Location = new System.Drawing.Point(159, 12);
+            this.dgv.Name = "dgv";
+            this.dgv.RowTemplate.Height = 21;
+            this.dgv.Size = new System.Drawing.Size(419, 372);
+            this.dgv.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 390);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv);
             this.Controls.Add(this.CrePassCustom);
             this.Controls.Add(this.CharactersLen);
             this.Controls.Add(this.Characters);
@@ -248,7 +252,7 @@
             this.CharactersLen.PerformLayout();
             this.CrePassCustom.ResumeLayout(false);
             this.CrePassCustom.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -271,7 +275,7 @@
         private System.Windows.Forms.RadioButton CrePassRbCustom;
         private System.Windows.Forms.RadioButton CrePassRb20;
         private System.Windows.Forms.RadioButton CrePassRb10;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv;
     }
 }
 
