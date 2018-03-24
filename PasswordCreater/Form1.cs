@@ -34,23 +34,20 @@ namespace PasswordCreater {
             if (para.Symbols == true) {
                 sr.Append(pwd.CreateSymbols(sr.ToString()));
             }
+            
             var pwdList = new List<string>();
             for (int i = 0; i < para.CrePass; i++) {
                 pwdList.Add(pwd.CreatePasswd(para.CharLen, sr.ToString()));
+                //pwdList[i] = pwd.CreatePasswd(para.CharLen, sr.ToString());
             }
 
-            //カラム追加 10レコードごとにカラムを追加
-            //dgv.ColumnCount = 1;
-            dgv.AutoGenerateColumns = true;
-            dgv.DataSource = pwdList;
-            ////1レコードを格納
-            //DataGridViewRow row = new DataGridViewRow();
-            //row.CreateCells(dgv);
-            //row.SetValues(pwdList.ToList());
-            ////配列を配列の大きさの範囲にぶち込む
-            //dgv.Rows.AddRange(row);
+            //カラム追加
+            dgv.ColumnCount = 1;
+            //ユーザーがレコードを追加できないようにする。
+            dgv.AllowUserToAddRows = false;
+            //レコード追加
             foreach (var item in pwdList) {
-                Console.WriteLine(item);
+                dgv.Rows.Add(item);
             }
         }
 
