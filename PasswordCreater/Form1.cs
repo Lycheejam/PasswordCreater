@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,18 +23,10 @@ namespace PasswordCreater {
             var pwd = new Password();
             //文字列生成
             var sr = new StringBuilder();
-            if (para.Uppercase == true) {
-                sr.Append(pwd.CreateUppercases());
-            }
-            if (para.Lowercase == true) {
-                sr.Append(pwd.CreateLowercases());
-            }
-            if (para.Numbers == true) {
-                sr.Append(pwd.CreateNumbers());
-            }
-            if (para.Symbols == true) {
-                sr.Append(pwd.CreateSymbols());
-            }
+            if (para.Uppercase) sr.Append(pwd.CreateUppercases());
+            if (para.Lowercase) sr.Append(pwd.CreateLowercases());
+            if (para.Numbers) sr.Append(pwd.CreateNumbers());
+            if (para.Symbols) sr.Append(pwd.CreateSymbols());
             
             var pwdList = new List<string>();
             for (int i = 0; i < para.CrePass; i++) {
@@ -55,20 +48,20 @@ namespace PasswordCreater {
         private void CrePassRb_CheckedChanged(object sender, EventArgs e) {
             if (CrePassRbCustom.Checked == true) {
                 //テキストボックスを使用可能に変更
-                CrePassTbCustom.Enabled = true;
+                CrePassUp.Enabled = true;
             } else if (CrePassRb10.Checked == true || 
                        CrePassRb20.Checked == true) {
                 //テキストボックスを使用不可に変更
-                CrePassTbCustom.Enabled = false;
+                CrePassUp.Enabled = false;
             }
         }
 
         private void CharLenRb_CheckedChanged(object sender, EventArgs e) {
             if (CharLenRbCustom.Checked == true) {
-                CharLenTbCustom.Enabled = true;
+                CharLenUp.Enabled = true;
             } else if (CharLenRb8.Checked == true ||
                        CharLenRb16.Checked == true) {
-                CharLenTbCustom.Enabled = false;
+                CharLenUp.Enabled = false;
             }
         }
 
@@ -89,7 +82,7 @@ namespace PasswordCreater {
             } else {
                 //空白の場合の処理
                 //デフォルト値を設定することで回避できる？
-                p.CharLen = Convert.ToInt32(CharLenTbCustom.Text);
+                p.CharLen = Convert.ToInt32(CharLenUp.Value);
             }
             //生成個数
             if (CrePassRb10.Checked == true) {
@@ -98,10 +91,46 @@ namespace PasswordCreater {
                 p.CrePass = 20;
             } else {
                 //空白の場合の処理
-                p.CrePass = Convert.ToInt32(CrePassTbCustom.Text);
+                p.CrePass = Convert.ToInt32(CrePassUp.Value);
             }
 
             return p;
+        }
+
+        private void CsvBtn_Click(object sender, EventArgs e) {
+            sfd.Filter = "CSVファイル|*.csv";
+            if (sfd.ShowDialog() == DialogResult.OK) {
+                try {
+                    //ストリームライター作成　いまいちよく分かっていない
+                    StreamWriter swriter = new StreamWriter(new FileStream(sfd.FileName, FileMode.OpenOrCreate, FileAccess.Write));
+
+                    for (int i = 1; i < dgv.RowCount - 1; i++) {
+                        //データグリッドビューの中身を書き込んでやる
+                        swriter.WriteLine("\"" + dgv[0, i].Value + "\",");
+                    }
+                    swriter.Close();
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message); //エラーをキャッチしたらメッセージ表示 
+                }
+            }
+        }
+
+        private void TxtBtn_Click(object sender, EventArgs e) {
+            sfd.Filter = "TXTファイル|*.txt";
+            if (sfd.ShowDialog() == DialogResult.OK) {
+                try {
+                    //ストリームライター作成　いまいちよく分かっていない
+                    StreamWriter swriter = new StreamWriter(new FileStream(sfd.FileName, FileMode.OpenOrCreate, FileAccess.Write));
+
+                    for (int i = 1; i < dgv.RowCount - 1; i++) {
+                        //データグリッドビューの中身を書き込んでやる
+                        swriter.WriteLine(dgv[0, i].Value);
+                    }
+                    swriter.Close();
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message); //エラーをキャッチしたらメッセージ表示 
+                }
+            }
         }
     }
 }

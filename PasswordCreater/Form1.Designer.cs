@@ -30,20 +30,25 @@
             this.LowercaseCB = new System.Windows.Forms.CheckBox();
             this.UppercaseCB = new System.Windows.Forms.CheckBox();
             this.CharactersLen = new System.Windows.Forms.GroupBox();
-            this.CharLenTbCustom = new System.Windows.Forms.TextBox();
             this.CharLenRbCustom = new System.Windows.Forms.RadioButton();
             this.CharLenRb16 = new System.Windows.Forms.RadioButton();
             this.CharLenRb8 = new System.Windows.Forms.RadioButton();
             this.CrePassCustom = new System.Windows.Forms.GroupBox();
-            this.CrePassTbCustom = new System.Windows.Forms.TextBox();
             this.CrePassRbCustom = new System.Windows.Forms.RadioButton();
             this.CrePassRb20 = new System.Windows.Forms.RadioButton();
             this.CrePassRb10 = new System.Windows.Forms.RadioButton();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.CharLenUp = new System.Windows.Forms.NumericUpDown();
+            this.CrePassUp = new System.Windows.Forms.NumericUpDown();
+            this.CsvBtn = new System.Windows.Forms.Button();
+            this.TxtBtn = new System.Windows.Forms.Button();
+            this.sfd = new System.Windows.Forms.SaveFileDialog();
             this.Characters.SuspendLayout();
             this.CharactersLen.SuspendLayout();
             this.CrePassCustom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CharLenUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CrePassUp)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateButton
@@ -115,7 +120,7 @@
             // 
             // CharactersLen
             // 
-            this.CharactersLen.Controls.Add(this.CharLenTbCustom);
+            this.CharactersLen.Controls.Add(this.CharLenUp);
             this.CharactersLen.Controls.Add(this.CharLenRbCustom);
             this.CharactersLen.Controls.Add(this.CharLenRb16);
             this.CharactersLen.Controls.Add(this.CharLenRb8);
@@ -125,14 +130,6 @@
             this.CharactersLen.TabIndex = 2;
             this.CharactersLen.TabStop = false;
             this.CharactersLen.Text = "パスワード文字数";
-            // 
-            // CharLenTbCustom
-            // 
-            this.CharLenTbCustom.Enabled = false;
-            this.CharLenTbCustom.Location = new System.Drawing.Point(59, 64);
-            this.CharLenTbCustom.Name = "CharLenTbCustom";
-            this.CharLenTbCustom.Size = new System.Drawing.Size(74, 19);
-            this.CharLenTbCustom.TabIndex = 3;
             // 
             // CharLenRbCustom
             // 
@@ -171,7 +168,7 @@
             // 
             // CrePassCustom
             // 
-            this.CrePassCustom.Controls.Add(this.CrePassTbCustom);
+            this.CrePassCustom.Controls.Add(this.CrePassUp);
             this.CrePassCustom.Controls.Add(this.CrePassRbCustom);
             this.CrePassCustom.Controls.Add(this.CrePassRb20);
             this.CrePassCustom.Controls.Add(this.CrePassRb10);
@@ -181,14 +178,6 @@
             this.CrePassCustom.TabIndex = 3;
             this.CrePassCustom.TabStop = false;
             this.CrePassCustom.Text = "パスワード生成数";
-            // 
-            // CrePassTbCustom
-            // 
-            this.CrePassTbCustom.Enabled = false;
-            this.CrePassTbCustom.Location = new System.Drawing.Point(60, 64);
-            this.CrePassTbCustom.Name = "CrePassTbCustom";
-            this.CrePassTbCustom.Size = new System.Drawing.Size(73, 19);
-            this.CrePassTbCustom.TabIndex = 3;
             // 
             // CrePassRbCustom
             // 
@@ -232,14 +221,52 @@
             this.dgv.Location = new System.Drawing.Point(159, 12);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 21;
-            this.dgv.Size = new System.Drawing.Size(419, 372);
+            this.dgv.Size = new System.Drawing.Size(419, 315);
             this.dgv.TabIndex = 4;
+            // 
+            // CharLenUp
+            // 
+            this.CharLenUp.Enabled = false;
+            this.CharLenUp.Location = new System.Drawing.Point(59, 65);
+            this.CharLenUp.Name = "CharLenUp";
+            this.CharLenUp.Size = new System.Drawing.Size(73, 19);
+            this.CharLenUp.TabIndex = 4;
+            // 
+            // CrePassUp
+            // 
+            this.CrePassUp.Enabled = false;
+            this.CrePassUp.Location = new System.Drawing.Point(60, 65);
+            this.CrePassUp.Name = "CrePassUp";
+            this.CrePassUp.Size = new System.Drawing.Size(73, 19);
+            this.CrePassUp.TabIndex = 3;
+            // 
+            // CsvBtn
+            // 
+            this.CsvBtn.Location = new System.Drawing.Point(159, 333);
+            this.CsvBtn.Name = "CsvBtn";
+            this.CsvBtn.Size = new System.Drawing.Size(207, 51);
+            this.CsvBtn.TabIndex = 5;
+            this.CsvBtn.Text = "CSV出力(カンマ区切り)";
+            this.CsvBtn.UseVisualStyleBackColor = true;
+            this.CsvBtn.Click += new System.EventHandler(this.CsvBtn_Click);
+            // 
+            // TxtBtn
+            // 
+            this.TxtBtn.Location = new System.Drawing.Point(371, 333);
+            this.TxtBtn.Name = "TxtBtn";
+            this.TxtBtn.Size = new System.Drawing.Size(207, 51);
+            this.TxtBtn.TabIndex = 6;
+            this.TxtBtn.Text = "TXT出力(改行区切り)";
+            this.TxtBtn.UseVisualStyleBackColor = true;
+            this.TxtBtn.Click += new System.EventHandler(this.TxtBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 390);
+            this.Controls.Add(this.TxtBtn);
+            this.Controls.Add(this.CsvBtn);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.CrePassCustom);
             this.Controls.Add(this.CharactersLen);
@@ -254,6 +281,8 @@
             this.CrePassCustom.ResumeLayout(false);
             this.CrePassCustom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CharLenUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CrePassUp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,16 +296,19 @@
         private System.Windows.Forms.CheckBox LowercaseCB;
         private System.Windows.Forms.CheckBox UppercaseCB;
         private System.Windows.Forms.GroupBox CharactersLen;
-        private System.Windows.Forms.TextBox CharLenTbCustom;
         private System.Windows.Forms.RadioButton CharLenRbCustom;
         private System.Windows.Forms.RadioButton CharLenRb16;
         private System.Windows.Forms.RadioButton CharLenRb8;
         private System.Windows.Forms.GroupBox CrePassCustom;
-        private System.Windows.Forms.TextBox CrePassTbCustom;
         private System.Windows.Forms.RadioButton CrePassRbCustom;
         private System.Windows.Forms.RadioButton CrePassRb20;
         private System.Windows.Forms.RadioButton CrePassRb10;
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.NumericUpDown CharLenUp;
+        private System.Windows.Forms.NumericUpDown CrePassUp;
+        private System.Windows.Forms.Button CsvBtn;
+        private System.Windows.Forms.Button TxtBtn;
+        private System.Windows.Forms.SaveFileDialog sfd;
     }
 }
 
