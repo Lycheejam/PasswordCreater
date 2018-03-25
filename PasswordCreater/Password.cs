@@ -1,16 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PasswordCreater {
     class Password {
-        //パスワード生成部分
-        public string CreatePasswd(int pwdLen, string pwdChar) {
+        /// <summary>
+        /// パスワード文字列を生成する。
+        /// </summary>
+        /// <param name="pwdLen">パスワード長</param>
+        /// <param name="pwdChar">パスワード使用文字列</param>
+        /// <param name="seed">乱数</param>
+        /// <returns>パスワード</returns>
+        public string CreatePasswd(int pwdLen, string pwdChar, int seed) {
             var sr = new StringBuilder(pwdLen);
-
-            var rnd = new Random((int)DateTime.Now.Ticks);
+            var rnd = new Random(seed);
 
             for (int i = 0; i < pwdLen; i++) {
                 sr.Append(pwdChar[rnd.Next(pwdChar.Length)]);
@@ -19,18 +22,26 @@ namespace PasswordCreater {
             return sr.ToString();
         }
 
-        public int? CreateRandomSeed() {
-            return null;
+        /// <summary>
+        /// 乱数を生成する。
+        /// </summary>
+        /// <returns>乱数</returns>
+        public int CreateRandomSeed() {
+            var bs = new byte[4];
+            //Int32と同じサイズのバイト配列にランダムな値を設定する
+            using (var rng = new RNGCryptoServiceProvider()) {
+                rng.GetBytes(bs);
+            }
+            //RNGCryptoServiceProviderで得たbit列をInt32型に変換してシード値とする。
+            return BitConverter.ToInt32(bs, 0);
         }
 
         /// <summary>
         /// 大文字作成
         /// </summary>
-        /// <param name="s">既存文字列</param>
-        /// <returns>既存文字列+大文字</returns>
-        public string CreateUppercases(string s) {
+        /// <returns>大文字</returns>
+        public string CreateUppercases() {
             var sr = new StringBuilder();
-            sr.Append(s);
             for (int i = 0x41; i < 0x5B; i++) {
                 sr.Append((Char)i);
             }
@@ -39,11 +50,9 @@ namespace PasswordCreater {
         /// <summary>
         /// 小文字作成
         /// </summary>
-        /// <param name="s">既存文字列</param>
-        /// <returns>既存文字列+小文字</returns>
-        public string CreateLowercases(string s) {
+        /// <returns>小文字</returns>
+        public string CreateLowercases() {
             var sr = new StringBuilder();
-            sr.Append(s);
             for (int i = 0x61; i < 0x7B; i++) {
                 sr.Append((Char)i);
             }
@@ -52,24 +61,20 @@ namespace PasswordCreater {
         /// <summary>
         /// 数字作成
         /// </summary>
-        /// <param name="s">既存文字列</param>
-        /// <returns>既存文字列+数字</returns>
-        public string CreateNumbers(string s) {
+        /// <returns>数字</returns>
+        public string CreateNumbers() {
             var sr = new StringBuilder();
-            sr.Append(s);
             for (int i = 0; i < 10; i++) {
-                sr.Append((Char)i);
+                sr.Append(i.ToString());
             }
             return sr.ToString();
         }
         /// <summary>
         /// 記号作成
         /// </summary>
-        /// <param name="s">既存文字列</param>
-        /// <returns>既存文字列+記号</returns>
-        public string CreateSymbols(string s) {
+        /// <returns>記号</returns>
+        public string CreateSymbols() {
             var sr = new StringBuilder();
-            sr.Append(s);
             for (int i = 0x21; i < 0x2F; i++) {
                 sr.Append((Char)i);
             }

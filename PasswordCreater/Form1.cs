@@ -23,26 +23,27 @@ namespace PasswordCreater {
             //文字列生成
             var sr = new StringBuilder();
             if (para.Uppercase == true) {
-                sr.Append(pwd.CreateUppercases(sr.ToString()));
+                sr.Append(pwd.CreateUppercases());
             }
             if (para.Lowercase == true) {
-                sr.Append(pwd.CreateLowercases(sr.ToString()));
+                sr.Append(pwd.CreateLowercases());
             }
             if (para.Numbers == true) {
-                sr.Append(pwd.CreateNumbers(sr.ToString()));
+                sr.Append(pwd.CreateNumbers());
             }
             if (para.Symbols == true) {
-                sr.Append(pwd.CreateSymbols(sr.ToString()));
+                sr.Append(pwd.CreateSymbols());
             }
             
             var pwdList = new List<string>();
             for (int i = 0; i < para.CrePass; i++) {
-                pwdList.Add(pwd.CreatePasswd(para.CharLen, sr.ToString()));
-                //pwdList[i] = pwd.CreatePasswd(para.CharLen, sr.ToString());
+                pwdList.Add(pwd.CreatePasswd(para.CharLen, sr.ToString(),pwd.CreateRandomSeed()));
             }
 
+            dgv.Columns.Clear();
             //カラム追加
-            dgv.ColumnCount = 1;
+            dgv.Columns.Add("pass", "パスワード");
+            //dgv.ColumnCount = 1;
             //ユーザーがレコードを追加できないようにする。
             dgv.AllowUserToAddRows = false;
             //レコード追加
