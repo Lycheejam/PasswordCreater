@@ -17,9 +17,8 @@ namespace PasswordCreater {
 
         private void button1_Click(object sender, EventArgs e) {
             //プロパティ取得（使用文字, パスワード長, 生成個数）
-            Parameter para = new Parameter();
-            para = GetParameter();
-            //パスワードクラス生成
+            var para = GetParameter();
+
             var pwd = new Password();
             //文字列生成
             var sr = new StringBuilder();
@@ -36,8 +35,6 @@ namespace PasswordCreater {
             dgv.Columns.Clear();
             //カラム追加
             dgv.Columns.Add("pass", "パスワード");
-            //dgv.ColumnCount = 1;
-            //ユーザーがレコードを追加できないようにする。
             dgv.AllowUserToAddRows = false;
             //レコード追加
             foreach (var item in pwdList) {
@@ -101,16 +98,14 @@ namespace PasswordCreater {
             sfd.Filter = "CSVファイル|*.csv";
             if (sfd.ShowDialog() == DialogResult.OK) {
                 try {
-                    //ストリームライター作成　いまいちよく分かっていない
                     StreamWriter swriter = new StreamWriter(new FileStream(sfd.FileName, FileMode.OpenOrCreate, FileAccess.Write));
 
                     for (int i = 1; i < dgv.RowCount - 1; i++) {
-                        //データグリッドビューの中身を書き込んでやる
                         swriter.WriteLine("\"" + dgv[0, i].Value + "\",");
                     }
                     swriter.Close();
                 } catch (Exception ex) {
-                    MessageBox.Show(ex.Message); //エラーをキャッチしたらメッセージ表示 
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -119,16 +114,14 @@ namespace PasswordCreater {
             sfd.Filter = "TXTファイル|*.txt";
             if (sfd.ShowDialog() == DialogResult.OK) {
                 try {
-                    //ストリームライター作成　いまいちよく分かっていない
                     StreamWriter swriter = new StreamWriter(new FileStream(sfd.FileName, FileMode.OpenOrCreate, FileAccess.Write));
 
                     for (int i = 1; i < dgv.RowCount - 1; i++) {
-                        //データグリッドビューの中身を書き込んでやる
                         swriter.WriteLine(dgv[0, i].Value);
                     }
                     swriter.Close();
                 } catch (Exception ex) {
-                    MessageBox.Show(ex.Message); //エラーをキャッチしたらメッセージ表示 
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
